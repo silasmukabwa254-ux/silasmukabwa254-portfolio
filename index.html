@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            transition: background-color 0.5s, color 0.5s;
+        }
+        body.light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        body.dark-mode {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        .toggle {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            background: none;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <button class="toggle" onclick="toggleMode()">Toggle Dark/Light Mode</button>
+    <h1>Welcome to My Portfolio!</h1>
+    <p>This is the enhanced version of my online portfolio.</p>
+
+    <div class="social-links">
+        <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+        <a href="https://github.com/yourprofile" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+    </div>
+    <a href="path/to/CV.pdf" download>Download My CV</a>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+        }
+    </script>
+</body>
+</html>
