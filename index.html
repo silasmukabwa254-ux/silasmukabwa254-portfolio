@@ -1,52 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <style>
-        body {
-            transition: background-color 0.5s, color 0.5s;
-        }
-        body.light-mode {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        body.dark-mode {
-            background-color: #333333;
-            color: #ffffff;
-        }
-        .toggle {
-            cursor: pointer;
-            padding: 10px;
-            border: none;
-            background: none;
-        }
-        .social-links {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Silas Mukabwa | ICT Student</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="light-mode">
-    <button class="toggle" onclick="toggleMode()">Toggle Dark/Light Mode</button>
-    <h1>Welcome to My Portfolio!</h1>
-    <p>This is the enhanced version of my online portfolio.</p>
 
-    <div class="social-links">
-        <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
-        <a href="https://github.com/yourprofile" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+<body>
+
+<div id="particles-js"></div>
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+
+<nav class="navbar">
+    <h2 class="logo">Silas.dev</h2>
+
+    <div class="menu-toggle" id="menu-toggle">
+        ☰
     </div>
-    <a href="path/to/CV.pdf" download>Download My CV</a>
 
-    <script>
-        function toggleMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            body.classList.toggle('light-mode');
-        }
-    </script>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button id="darkModeToggle">🌙</button>
+</nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container" id="home">
+
+        <img src="profile.jpg.png" alt="Silas Profile Picture" class="profile-img">
+
+        <h1>Silas Mukabwa</h1>
+       <p><span id="typing-text"></span><span class="cursor">|</span></p>
+
+        <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>
+        I am passionate about technology, cybersecurity, and building secure systems.
+        I am currently strengthening my foundation in web development and networking.
+    </p>
+</section>
+
+
+        <h2 id="skills">Skills I Am Learning</h2>
+        <ul>
+            <li>HTML & CSS</li>
+            <li>Computer Hardware</li>
+            <li>Networking Basics</li>
+            <li>Cybersecurity Fundamentals</li>
+        </ul>
+
+        <h2 id="contact">Contact Me</h2>
+<div class="contact">
+    <a href="mailto:silasmukabwa254@gmail.com">Email Me</a>
+    <a href="tel:+254769810785">Call Me</a>
+</div>
+
+<p style="margin-top:15px;">
+    📧 silasmukabwa254@gmail.com <br>
+    📞 +254769810785
+</p>
+<section id="projects" class="fade-in">
+    <h2>My Projects</h2>
+
+<div class="project-card">
+    <img src="portfolio.jpg.png" alt="Portfolio Project" class="project-img">
+    <h3>My Portfolio Website</h3>
+    <p>A simple website built using HTML and CSS.</p>
+</div>
+
+
+<div class="project-card">
+    <img src="practice.jpg.png" alt="Practice Project" class="project-img">
+    <h3>My Practice Website</h3>
+    <p>A simple website built using HTML and CSS.</p>
+</div>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
+

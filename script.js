@@ -1,61 +1,64 @@
-// script.js
+const toggleBtn = document.getElementById("darkModeToggle");
 
-// Dark Mode Toggle
-const toggleButton = document.getElementById('toggle-dark-mode');
-toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+// Check saved preference when page loads
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+}
+
+// Toggle dark mode
+toggleBtn.addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+    }
 });
+// Scroll animation
+const faders = document.querySelectorAll(".fade-in");
 
-// Smooth Scrolling
-const scrollLinks = document.querySelectorAll('a[href^="#"]');
-scrollLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        target.scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Intersection Observer Animations
-const observerOptions = {
-    root: null,
-    threshold: 0.1
-};
-
-const sectionObserver = new IntersectionObserver((entries) => {
+const appearOnScroll = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-        } else {
-            entry.target.classList.remove('fade-in');
+            entry.target.classList.add("show");
         }
     });
-}, observerOptions);
+}, { threshold: 0.2 });
 
-const sections = document.querySelectorAll('section');
-sections.forEach(section => {
-    sectionObserver.observe(section);
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
 });
-
-// Hamburger Menu
-const hamburgerButton = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-hamburgerButton.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+// Hide loader when page loads
+window.addEventListener("load", function() {
+    document.getElementById("loader").style.display = "none";
 });
+// Typing effect
+const text = "ICT Student | Future Cybersecurity Professional";
+let index = 0;
 
-// Scroll Effects
-const scrollEffectElements = document.querySelectorAll('.scroll-effect');
-window.addEventListener('scroll', () => {
-    scrollEffectElements.forEach(element => {
-        const position = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (position < windowHeight) {
-            element.classList.add('visible');
-        } else {
-            element.classList.remove('visible');
-        }
-    });
+function typeEffect() {
+    if (index < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 50);
+    }
+}
+
+typeEffect();
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 60 },
+        size: { value: 3 },
+        color: { value: "#ffffff" },
+        line_linked: { enable: true, color: "#ffffff" },
+        move: { speed: 2 }
+    }
+});
+// Hamburger menu
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.addEventListener("click", function() {
+    navLinks.classList.toggle("show");
 });
