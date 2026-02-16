@@ -1,9 +1,7 @@
 const toggleBtn = document.getElementById("darkModeToggle");
 
 // Check saved preference when page loads
-if (localStorage.getItem("darkMode") === "enabled") {
-    document.body.classList.add("dark-mode");
-}
+document.body.classList.add("dark-mode");
 
 // Toggle dark mode
 toggleBtn.addEventListener("click", function() {

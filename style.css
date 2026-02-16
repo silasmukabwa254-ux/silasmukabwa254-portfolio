@@ -148,7 +148,7 @@ body.dark-mode .project-card {
 }
 
         .nav-links a:hover {
-            color: #3b82f6;
+            color: #00cc6a;
         }
 
         /* MAIN CONTAINER */
@@ -169,7 +169,7 @@ body.dark-mode .project-card {
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #2563eb;
+            border: 5px solid #00ff88;
             margin-bottom: 20px;
             transition: 0.3s;
         }
@@ -266,4 +266,49 @@ body.dark-mode h2 {
 
 .project-img:hover {
     transform: scale(1.05);
+}
+
+section {
+    background-color: #111827;
+    border-left: 3px solid #00ff88;
+}
+
+.tools li {
+    background-color: #111827;
+    color: #00ff88;
+    border: 1px solid #00ff88;
+}
+
+.terminal {
+    background: #0f172a;
+    color: #00ff88;
+    text-align: left;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: monospace;
+    margin-bottom: 30px;
+}
+
+.green {
+    color: #00ff88;
+}
+
+h1, h2, h3 {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.btn {
+    background-color: #00ff88;
+    color: #0f172a;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #00cc6a;
+    box-shadow: 0 0 10px #00ff88;
 }
