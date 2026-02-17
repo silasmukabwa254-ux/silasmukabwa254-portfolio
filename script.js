@@ -165,3 +165,53 @@ async function generateHash() {
 
     document.getElementById("hashOutput").textContent = hashHex;
 }
+async function checkFileIntegrity() {
+    const fileInput = document.getElementById("fileInput");
+    const result = document.getElementById("fileHashResult");
+
+    if (!fileInput.files.length) {
+        result.textContent = "Please select a file.";
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const arrayBuffer = await file.arrayBuffer();
+
+    const hashBuffer = await crypto.subtle.digest("SHA-256", arrayBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+    result.textContent = "File SHA-256: " + hashHex;
+}
+function handleTerminal(event) {
+    if (event.key !== "Enter") return;
+
+    const inputField = document.getElementById("terminalInput");
+    const terminal = document.getElementById("terminal");
+    const command = inputField.value.trim().toLowerCase();
+
+    let output = "";
+
+    switch(command) {
+        case "help":
+            output = "Available commands: help, whoami, ls, clear";
+            break;
+        case "whoami":
+            output = "silas - aspiring cybersecurity analyst";
+            break;
+        case "ls":
+            output = "projects  security-tools  learning-log";
+            break;
+        case "clear":
+            terminal.innerHTML = "";
+            inputField.value = "";
+            return;
+        default:
+            output = "Command not found.";
+    }
+
+    terminal.innerHTML += `<p>> ${command}</p>`;
+    terminal.innerHTML += `<p>${output}</p>`;
+    terminal.scrollTop = terminal.scrollHeight;
+    inputField.value = "";
+}

@@ -106,8 +106,37 @@
 
     <p id="hashResult"></p>
 </div>
+<div class="project-card">
+    <h3>File Integrity Checker (SHA-256)</h3>
+    <p>Upload a file to generate its SHA-256 hash and verify integrity.</p>
 
+    <input type="file" id="fileInput">
+    <button class="btn" onclick="checkFileIntegrity()">Generate File Hash</button>
+
+    <p id="fileHashResult"></p>
 </div>
+<div class="project-card">
+    <h3>Linux Terminal Simulation</h3>
+    <div id="terminal" style="background:black;color:#00ff88;padding:15px;height:200px;overflow-y:auto;font-family:monospace;">
+        <p>Welcome to SilasOS v1.0</p>
+        <p>Type 'help' to see available commands.</p>
+    </div>
+    <input type="text" id="terminalInput" placeholder="Enter command" onkeydown="handleTerminal(event)">
+</div>
+<section class="fade-in">
+    <h2>Cybersecurity Learning Log</h2>
+
+    <div class="project-card">
+        <ul>
+            <li>✔ Learned difference between hashing and encryption</li>
+            <li>✔ Implemented SHA-256 hashing using Web Crypto API</li>
+            <li>✔ Built password strength checker</li>
+            <li>✔ Implemented input sanitization (XSS prevention)</li>
+            <li>✔ Built file integrity verification tool</li>
+        </ul>
+    </div>
+</section>
+
 <section class="fade-in">
     <h2>Security Concepts Explained</h2>
 
