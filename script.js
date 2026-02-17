@@ -43,7 +43,6 @@ function typeEffect() {
     }
 }
 
-typeEffect();
 if (typeof particlesJS !== "undefined") {
     particlesJS("particles-js", {
         particles: {
