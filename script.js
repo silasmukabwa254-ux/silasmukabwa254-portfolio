@@ -94,4 +94,40 @@ passwordInput.addEventListener("input", function () {
         strengthFill.style.background = "#00ff88";
     }
 });
+const emailInput = document.getElementById("emailInput");
+const emailResult = document.getElementById("emailResult");
+
+emailInput.addEventListener("input", function () {
+    const email = emailInput.value;
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (email === "") {
+        emailResult.textContent = "";
+    } else if (emailPattern.test(email)) {
+        emailResult.textContent = "Valid Email Format";
+        emailResult.style.color = "#00ff88";
+    } else {
+        emailResult.textContent = "Invalid Email Format";
+        emailResult.style.color = "red";
+    }
+});
+function generateHash() {
+    const input = document.getElementById("hashInput").value;
+    let hash = 0;
+
+    if (input.length === 0) {
+        document.getElementById("hashResult").textContent = "";
+        return;
+    }
+
+    for (let i = 0; i < input.length; i++) {
+        hash = input.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    hash = hash & hash;
+    hash = hash.toString(16);
+
+    document.getElementById("hashResult").textContent = "Hash: " + hash;
+    document.getElementById("hashResult").style.color = "#00ff88";
+}
 
