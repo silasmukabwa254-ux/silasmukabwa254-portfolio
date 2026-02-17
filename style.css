@@ -213,8 +213,8 @@ body {
         }
 
         ul li:hover {
-            background-color: #2563eb;
-            color: white;
+            background-color: #ffffff;
+            color: #1a1a1a;
             transform: scale(1.05);
         }
 
@@ -290,21 +290,6 @@ body {
     margin-top: 10px;
     font-weight: bold;
 }
-.strength-bar {
-    width: 100%;
-    height: 8px;
-    background: #1f2937;
-    border-radius: 5px;
-    margin-top: 10px;
-    overflow: hidden;
-}
-
-#strengthFill {
-    height: 100%;
-    width: 0%;
-    transition: 0.3s ease;
-}
-
 .project-card:hover {
     transform: translateY(-5px);
     transition: 0.3s ease;
