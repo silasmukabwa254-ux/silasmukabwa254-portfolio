@@ -60,3 +60,28 @@ const navLinks = document.getElementById("nav-links");
 menuToggle.addEventListener("click", function() {
     navLinks.classList.toggle("show");
 });
+const passwordInput = document.getElementById("passwordInput");
+const strengthResult = document.getElementById("strengthResult");
+
+passwordInput.addEventListener("input", function () {
+    const password = passwordInput.value;
+    let strength = 0;
+
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+    if (strength === 0) {
+        strengthResult.textContent = "";
+    } else if (strength <= 2) {
+        strengthResult.textContent = "Weak Password";
+        strengthResult.style.color = "red";
+    } else if (strength === 3) {
+        strengthResult.textContent = "Moderate Password";
+        strengthResult.style.color = "orange";
+    } else {
+        strengthResult.textContent = "Strong Password";
+        strengthResult.style.color = "#00ff88";
+    }
+});
