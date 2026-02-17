@@ -142,3 +142,26 @@ function copyHash() {
             console.error("Failed to copy: ", err);
         });
 }
+function sanitizeInput(input) {
+  let userInput = sanitizeInput(document.getElementById("emailInput").value);
+    return input
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+async function generateHash() {
+    const text = document.getElementById("hashInput").value;
+
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => 
+        b.toString(16).padStart(2, "0")
+    ).join("");
+
+    document.getElementById("hashOutput").textContent = hashHex;
+}
