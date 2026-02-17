@@ -44,15 +44,18 @@ function typeEffect() {
 }
 
 typeEffect();
-particlesJS("particles-js", {
-    particles: {
-        number: { value: 60 },
-        size: { value: 3 },
-        color: { value: "#ffffff" },
-        line_linked: { enable: true, color: "#ffffff" },
-        move: { speed: 2 }
-    }
-});
+if (typeof particlesJS !== "undefined") {
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 60 },
+            size: { value: 3 },
+            color: { value: "#ffffff" },
+            line_linked: { enable: true, color: "#ffffff" },
+            move: { speed: 2 }
+        }
+    });
+}
+
 // Hamburger menu
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
@@ -62,6 +65,10 @@ menuToggle.addEventListener("click", function() {
 });
 const strengthFill = document.getElementById("strengthFill");
 
+const passwordInput = document.getElementById("passwordInput");
+const strengthResult = document.getElementById("strengthResult");
+
+if (passwordInput)
 passwordInput.addEventListener("input", function () {
     const password = passwordInput.value;
     let strength = 0;
@@ -143,7 +150,6 @@ function copyHash() {
         });
 }
 function sanitizeInput(input) {
-  let userInput = sanitizeInput(document.getElementById("emailInput").value);
     return input
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -151,20 +157,8 @@ function sanitizeInput(input) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
-async function generateHash() {
-    const text = document.getElementById("hashInput").value;
 
-    const encoder = new TextEncoder();
-    const data = encoder.encode(text);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
 
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map(b => 
-        b.toString(16).padStart(2, "0")
-    ).join("");
-
-    document.getElementById("hashOutput").textContent = hashHex;
-}
 async function checkFileIntegrity() {
     const fileInput = document.getElementById("fileInput");
     const result = document.getElementById("fileHashResult");
