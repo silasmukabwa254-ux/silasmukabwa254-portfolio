@@ -111,23 +111,21 @@ emailInput.addEventListener("input", function () {
         emailResult.style.color = "red";
     }
 });
-function generateHash() {
+async function generateHash() {
     const input = document.getElementById("hashInput").value;
-    let hash = 0;
 
-    if (input.length === 0) {
+    if (!input) {
         document.getElementById("hashResult").textContent = "";
         return;
     }
 
-    for (let i = 0; i < input.length; i++) {
-        hash = input.charCodeAt(i) + ((hash << 5) - hash);
-    }
+    const encoder = new TextEncoder();
+    const data = encoder.encode(input);
 
-    hash = hash & hash;
-    hash = hash.toString(16);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
-    document.getElementById("hashResult").textContent = "Hash: " + hash;
+    document.getElementById("hashResult").textContent = "SHA-256: " + hashHex;
     document.getElementById("hashResult").style.color = "#00ff88";
 }
-
