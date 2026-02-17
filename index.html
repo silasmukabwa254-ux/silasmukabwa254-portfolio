@@ -97,14 +97,45 @@
     <p id="emailResult"></p>
 </div>
 <div class="project-card">
-    <h3>Simple Hash Generator</h3>
-    <p>This tool generates a basic hash representation of input text (educational demo).</p>
+    <h3>SHA-256 Hash Generator</h3>
+    <p>This tool generates a secure SHA-256 hash of input text.</p>
 
     <input type="text" id="hashInput" placeholder="Enter text to hash">
     <button class="btn" onclick="generateHash()">Generate Hash</button>
+    <button class="btn" onclick="copyHash()">Copy Hash</button>
 
     <p id="hashResult"></p>
 </div>
+
+</div>
+<section class="fade-in">
+    <h2>Security Concepts Explained</h2>
+
+    <div class="project-card">
+        <h3>What is Hashing?</h3>
+        <p>
+            Hashing is a one-way process that converts data into a fixed-length string.
+            It is commonly used to store passwords securely and verify data integrity.
+            Unlike encryption, hashing cannot be reversed.
+        </p>
+    </div>
+
+    <div class="project-card">
+        <h3>Why Input Validation Matters</h3>
+        <p>
+            Input validation prevents malicious or malformed data from entering systems.
+            Proper validation helps protect against attacks such as injection and data corruption.
+        </p>
+    </div>
+
+    <div class="project-card">
+        <h3>Password Strength & Authentication</h3>
+        <p>
+            Strong passwords reduce the risk of brute-force and dictionary attacks.
+            Authentication systems rely on strong credential policies to protect user accounts.
+        </p>
+    </div>
+</section>
 
 </section>
 

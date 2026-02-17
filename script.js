@@ -129,3 +129,16 @@ async function generateHash() {
     document.getElementById("hashResult").textContent = "SHA-256: " + hashHex;
     document.getElementById("hashResult").style.color = "#00ff88";
 }
+function copyHash() {
+    const hashText = document.getElementById("hashResult").textContent;
+
+    if (!hashText) return;
+
+    navigator.clipboard.writeText(hashText)
+        .then(() => {
+            alert("Hash copied to clipboard!");
+        })
+        .catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+}
