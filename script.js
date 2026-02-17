@@ -60,8 +60,7 @@ const navLinks = document.getElementById("nav-links");
 menuToggle.addEventListener("click", function() {
     navLinks.classList.toggle("show");
 });
-const passwordInput = document.getElementById("passwordInput");
-const strengthResult = document.getElementById("strengthResult");
+const strengthFill = document.getElementById("strengthFill");
 
 passwordInput.addEventListener("input", function () {
     const password = passwordInput.value;
@@ -74,14 +73,25 @@ passwordInput.addEventListener("input", function () {
 
     if (strength === 0) {
         strengthResult.textContent = "";
-    } else if (strength <= 2) {
+        strengthFill.style.width = "0%";
+    } 
+    else if (strength <= 2) {
         strengthResult.textContent = "Weak Password";
         strengthResult.style.color = "red";
-    } else if (strength === 3) {
+        strengthFill.style.width = "33%";
+        strengthFill.style.background = "red";
+    } 
+    else if (strength === 3) {
         strengthResult.textContent = "Moderate Password";
         strengthResult.style.color = "orange";
-    } else {
+        strengthFill.style.width = "66%";
+        strengthFill.style.background = "orange";
+    } 
+    else {
         strengthResult.textContent = "Strong Password";
         strengthResult.style.color = "#00ff88";
+        strengthFill.style.width = "100%";
+        strengthFill.style.background = "#00ff88";
     }
 });
+
