@@ -110,22 +110,7 @@ passwordInput.addEventListener("input", function () {
     }
 });
 }
-const emailResult = document.getElementById("emailResult");
 
-emailInput.addEventListener("input", function () {
-    const email = emailInput.value;
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-    if (email === "") {
-        emailResult.textContent = "";
-    } else if (emailPattern.test(email)) {
-        emailResult.textContent = "Valid Email Format";
-        emailResult.style.color = "#00ff88";
-    } else {
-        emailResult.textContent = "Invalid Email Format";
-        emailResult.style.color = "red";
-    }
-});
 async function generateHash() {
     const input = document.getElementById("hashInput").value;
 
