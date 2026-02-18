@@ -435,36 +435,7 @@ section {
 .invalid {
     border: 2px solid red;
 }
-/* MOBILE RESPONSIVE FIX */
-@media (max-width: 768px) {
 
-    body {
-        display: block;
-    }
-
-    .sidebar {
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0;
-    }
-
-    .main-content {
-        margin-left: 0 !important;
-        width: 100% !important;
-    }
-
-    .dashboard,
-    .cards-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card,
-    .btn {
-        width: 100% !important;
-    }
-}
 /* MOBILE LAYOUT FIX */
 @media (max-width: 768px) {
 
