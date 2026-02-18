@@ -465,3 +465,19 @@ section {
         width: 100% !important;
     }
 }
+/* MOBILE LAYOUT FIX */
+@media (max-width: 768px) {
+
+    body {
+        display: block;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
