@@ -425,3 +425,6 @@ section {
     flex: 1;
     padding: 40px;
 }
+.hidden {
+    display: none;
+}

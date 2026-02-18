@@ -49,7 +49,6 @@ if (typingElement) {
     typeEffect();
 }
 
-
 if (typeof particlesJS !== "undefined") {
     particlesJS("particles-js", {
         particles: {
@@ -218,4 +217,35 @@ function handleTerminal(event) {
     terminal.innerHTML += `<p>${output}</p>`;
     terminal.scrollTop = terminal.scrollHeight;
     inputField.value = "";
+}
+const copyBtn = document.getElementById("copyHashBtn");
+const copyMessage = document.getElementById("copyMessage");
+const hashResult = document.getElementById("hashResult");
+
+if (copyBtn && hashResult) {
+    copyBtn.addEventListener("click", function () {
+
+        if (hashResult.textContent.trim() === "") {
+            copyMessage.textContent = "No hash to copy!";
+            copyMessage.style.color = "red";
+            copyMessage.classList.remove("hidden");
+            return;
+        }
+
+        navigator.clipboard.writeText(hashResult.textContent)
+            .then(() => {
+                copyMessage.textContent = "Hash copied successfully!";
+                copyMessage.style.color = "green";
+                copyMessage.classList.remove("hidden");
+
+                setTimeout(() => {
+                    copyMessage.classList.add("hidden");
+                }, 2000);
+            })
+            .catch(() => {
+                copyMessage.textContent = "Failed to copy!";
+                copyMessage.style.color = "red";
+                copyMessage.classList.remove("hidden");
+            });
+    });
 }
