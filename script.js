@@ -1,18 +1,16 @@
 const toggleBtn = document.getElementById("darkModeToggle");
 
-// Check saved preference when page loads
-document.body.classList.add("dark-mode");
+if (toggleBtn) {
+    toggleBtn.addEventListener("click", function() {
+        document.body.classList.toggle("dark-mode");
 
-// Toggle dark mode
-toggleBtn.addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("darkMode", "enabled");
-    } else {
-        localStorage.setItem("darkMode", "disabled");
-    }
-});
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+        }
+    });
+}
 // Scroll animation
 const faders = document.querySelectorAll(".fade-in");
 
@@ -29,19 +27,28 @@ faders.forEach(fader => {
 });
 // Hide loader when page loads
 window.addEventListener("load", function() {
-    document.getElementById("loader").style.display = "none";
-});
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "none";
+    }
+})
 // Typing effect
 const text = "ICT Student | Future Cybersecurity Professional";
 let index = 0;
 
-function typeEffect() {
-    if (index < text.length) {
-        document.getElementById("typing-text").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 50);
+const typingElement = document.getElementById("typing-text");
+
+if (typingElement) {
+    function typeEffect() {
+        if (index < text.length) {
+            typingElement.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeEffect, 50);
+        }
     }
+    typeEffect();
 }
+
 
 if (typeof particlesJS !== "undefined") {
     particlesJS("particles-js", {
@@ -59,15 +66,18 @@ if (typeof particlesJS !== "undefined") {
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
-menuToggle.addEventListener("click", function() {
-    navLinks.classList.toggle("show");
-});
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function() {
+        navLinks.classList.toggle("show");
+    });
+}
+
 const strengthFill = document.getElementById("strengthFill");
 
 const passwordInput = document.getElementById("passwordInput");
 const strengthResult = document.getElementById("strengthResult");
 
-if (passwordInput)
+if (passwordInput) { 
 passwordInput.addEventListener("input", function () {
     const password = passwordInput.value;
     let strength = 0;
@@ -100,6 +110,7 @@ passwordInput.addEventListener("input", function () {
         strengthFill.style.background = "#00ff88";
     }
 });
+}
 const emailInput = document.getElementById("emailInput");
 const emailResult = document.getElementById("emailResult");
 
