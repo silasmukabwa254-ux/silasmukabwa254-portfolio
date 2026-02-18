@@ -110,7 +110,6 @@ passwordInput.addEventListener("input", function () {
     }
 });
 }
-const emailInput = document.getElementById("emailInput");
 const emailResult = document.getElementById("emailResult");
 
 emailInput.addEventListener("input", function () {
@@ -247,5 +246,32 @@ if (copyBtn && hashResult) {
                 copyMessage.style.color = "red";
                 copyMessage.classList.remove("hidden");
             });
+    });
+}
+const emailInput = document.getElementById("emailInput");
+const emailMessage = document.getElementById("emailMessage");
+
+if (emailInput && emailMessage) {
+
+    emailInput.addEventListener("input", function () {
+
+        const emailValue = emailInput.value.trim();
+
+        // Simple but effective email regex
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (emailValue === "") {
+            emailMessage.textContent = "";
+            emailInput.style.borderColor = "";
+            return;
+        }
+
+     emailInput.classList.remove("valid", "invalid");
+
+if (emailPattern.test(emailValue)) {
+    emailInput.classList.add("valid");
+} else {
+    emailInput.classList.add("invalid");
+}
     });
 }
