@@ -435,3 +435,30 @@ section {
 .invalid {
     border: 2px solid red;
 }
+/* MOBILE FIX */
+@media (max-width: 768px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
