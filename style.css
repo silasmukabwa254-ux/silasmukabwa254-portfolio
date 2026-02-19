@@ -452,3 +452,8 @@ section {
         width: 100% !important;
     }
 }
+@media (max-width: 768px) {
+    body {
+        background: red !important;
+    }
+}
