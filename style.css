@@ -192,6 +192,8 @@ body.dark-mode .project-card {
 
 .nav-links li {
     position: relative;
+    z-index: 1000;
+
 }
 
 .nav-links a {
@@ -200,22 +202,24 @@ body.dark-mode .project-card {
 }
 
 .dropdown-menu {
-    display: none;
     position: absolute;
-    top: 30px;
-    background: #222;
-    list-style: none;
-    padding: 10px;
+    top: 100%;
+    left: 0;
+    width: 100%;
 }
+
 
 .dropdown-menu li {
     margin: 5px 0;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+    display: none;
 }
 
+.dropdown-menu.active {
+    display: block;
+}
 .logo {
     margin: 0;
 }
@@ -478,6 +482,13 @@ section {
         padding: 20px;        /* reduce padding for mobile */
     }
 }
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 
 /* Tablets */
 @media (min-width: 768px) {
@@ -492,4 +503,15 @@ section {
 /* Large Screens */
 @media (min-width: 1440px) {
     
+}
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero-image img {
+    max-width: 250px;
+    width: 100%;
 }

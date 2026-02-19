@@ -263,3 +263,9 @@ if (emailPattern.test(emailValue)) {
 window.addEventListener("resize", function() {
     console.log("Screen width:", window.innerWidth);
 });
+const menuBtn = document.querySelector(".menu-btn");
+const dropdown = document.querySelector(".dropdown-menu");
+
+menuBtn.addEventListener("click", () => {
+    dropdown.classList.toggle("active");
+});
