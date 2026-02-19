@@ -439,18 +439,16 @@ section {
 /* MOBILE LAYOUT FIX */
 @media (max-width: 768px) {
 
+    .dashboard {
+        flex-direction: column !important;
+    }
+
     .sidebar {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .main-content {
-        margin-left: 0 !important;
         width: 100% !important;
     }
 
-    body {
-        display: block;
+    .content {
+        width: 100% !important;
     }
 }
+
