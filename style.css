@@ -440,15 +440,17 @@ section {
 @media (max-width: 768px) {
 
     .dashboard {
-        flex-direction: column !important;
+        flex-direction: column;
     }
 
     .sidebar {
-        width: 100% !important;
+        width: 100%;
+        position: relative;   /* important */
     }
 
     .content {
-        width: 100% !important;
+        width: 100%;
+        padding: 20px;        /* reduce padding for mobile */
     }
 }
 
