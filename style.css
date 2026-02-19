@@ -1,4 +1,24 @@
-     /* LOADER */
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* RESPONSIVE IMAGES */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* MAIN CONTAINER LIMIT */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* LOADER */
 #loader {
     position: fixed;
     width: 100%;
@@ -435,6 +455,11 @@ section {
 .invalid {
     border: 2px solid red;
 }
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
 
 /* MOBILE LAYOUT FIX */
 @media (max-width: 768px) {
@@ -454,3 +479,17 @@ section {
     }
 }
 
+/* Tablets */
+@media (min-width: 768px) {
+    
+}
+
+/* Laptops */
+@media (min-width: 1024px) {
+    
+}
+
+/* Large Screens */
+@media (min-width: 1440px) {
+    
+}

@@ -260,3 +260,6 @@ if (emailPattern.test(emailValue)) {
 }
     });
 }
+window.addEventListener("resize", function() {
+    console.log("Screen width:", window.innerWidth);
+});
