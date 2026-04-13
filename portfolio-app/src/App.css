@@ -379,6 +379,23 @@
   color: var(--text);
 }
 
+.community-embed {
+  margin-top: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.utterances {
+  margin-top: 12px;
+}
+
+.utterances iframe {
+  width: 100%;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

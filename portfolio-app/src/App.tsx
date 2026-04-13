@@ -112,6 +112,7 @@ function App() {
             <a href="#writeups">Writeups</a>
             <a href="#certs">Certs</a>
             <a href="#tools">Tools</a>
+            <a href="#community">Community</a>
             <a href="#contact">Contact</a>
           </nav>
 
@@ -228,6 +229,52 @@ function App() {
           </div>
         </section>
 
+        <section className="section container" id="community">
+          <h2 className="h2">Community</h2>
+          <p className="p">
+            I’m building this into a small learning community for cybersecurity beginners. Ask questions, suggest writeups,
+            and leave a message.
+          </p>
+
+          <div className="grid">
+            <Card title="Start a discussion">
+              Use GitHub Discussions for questions, feedback, and ideas. It keeps everything public and searchable for other learners.
+              <div className="row">
+                <a
+                  className="btn btn-ghost"
+                  href="https://github.com/silasmukabwa254-ux/silasmukabwa254-portfolio/discussions"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open Discussions
+                </a>
+              </div>
+            </Card>
+
+            <Card title="Suggest a writeup topic">
+              If there’s a topic you want explained (DNS, Linux permissions, hashing, etc.), drop an idea as an issue.
+              <div className="row">
+                <a
+                  className="btn btn-ghost"
+                  href="https://github.com/silasmukabwa254-ux/silasmukabwa254-portfolio/issues/new?template=writeup-idea.md"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Suggest a topic
+                </a>
+              </div>
+            </Card>
+          </div>
+
+          <div className="community-embed">
+            <h3 className="h3">Guestbook</h3>
+            <p className="p">
+              Leave a quick message. This uses GitHub issues for comments, so it works on GitHub Pages with no backend.
+            </p>
+            <Utterances theme={theme} />
+          </div>
+        </section>
+
         <section className="section container" id="tools">
           <h2 className="h2">Tools & technologies</h2>
           <div className="chips" role="list">
@@ -339,6 +386,30 @@ function WriteupCard({ writeup }: { writeup: Writeup }) {
       </div>
     </article>
   )
+}
+
+function Utterances({ theme }: { theme: Theme }) {
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const host = ref.current
+    if (!host) return
+
+    host.innerHTML = ''
+
+    const script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.async = true
+    script.crossOrigin = 'anonymous'
+    script.setAttribute('repo', 'silasmukabwa254-ux/silasmukabwa254-portfolio')
+    script.setAttribute('issue-term', 'pathname')
+    script.setAttribute('label', 'guestbook')
+    script.setAttribute('theme', theme === 'dark' ? 'github-dark' : 'github-light')
+
+    host.appendChild(script)
+  }, [theme])
+
+  return <div ref={ref} className="utterances" />
 }
 
 function PasswordStrengthCard() {
