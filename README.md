@@ -11,13 +11,13 @@
 project/
 │
 ├── index.html      # Main HTML file
-├── css/           # Folder containing CSS files
-│   └── styles.css  # Main CSS styles
-├── js/            # Folder for JavaScript files
-│   └── scripts.js  # JavaScript functionality
-└── assets/        # Folder for images and other media files
-    ├── img/       # Image folder
-    └── fonts/     # Font files
+├── style.css       # Main site styles
+├── styles.css      # Extra styles (cards + CSS variables)
+├── script.js       # JavaScript functionality
+├── webdev.html     # Web development page
+├── css.html        # CSS deep dive page
+├── contacts.html   # Contact page
+└── *.png           # Images used on the site
 ```
 
 ## Getting Started Guide
@@ -30,9 +30,9 @@ project/
 3. Use a code editor to make changes in the files as necessary.
 
 ## Customization Instructions
-- To customize the styles, modify the `css/styles.css` file.
+- To customize the styles, modify `style.css` (and `styles.css` for the card styles/variables).
 - To change the content, edit the `index.html` file directly.
-- Feel free to add more assets in the `assets` folder and reference them in your HTML/CSS.
+- Feel free to add more images and reference them in your HTML/CSS.
 
 ## GitHub Pages Setup
 1. Push your changes to the `main` branch:

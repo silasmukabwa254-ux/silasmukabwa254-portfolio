@@ -197,8 +197,13 @@ function handleTerminal(event) {
             output = "Command not found.";
     }
 
-    terminal.innerHTML += `<p>> ${command}</p>`;
-    terminal.innerHTML += `<p>${output}</p>`;
+    const cmdLine = document.createElement("p");
+    cmdLine.textContent = `> ${command}`;
+    terminal.appendChild(cmdLine);
+
+    const outLine = document.createElement("p");
+    outLine.textContent = output;
+    terminal.appendChild(outLine);
     terminal.scrollTop = terminal.scrollHeight;
     inputField.value = "";
 }
@@ -266,6 +271,8 @@ window.addEventListener("resize", function() {
 const menuBtn = document.querySelector(".menu-btn");
 const dropdown = document.querySelector(".dropdown-menu");
 
-menuBtn.addEventListener("click", () => {
-    dropdown.classList.toggle("active");
-});
+if (menuBtn && dropdown) {
+    menuBtn.addEventListener("click", () => {
+        dropdown.classList.toggle("active");
+    });
+}
