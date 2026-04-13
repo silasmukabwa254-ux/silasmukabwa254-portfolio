@@ -3,6 +3,22 @@ import './App.css'
 
 type Theme = 'light' | 'dark'
 
+type Link = { label: string; href: string }
+type Project = {
+  title: string
+  subtitle: string
+  tags: string[]
+  highlights: string[]
+  links: Link[]
+  status?: 'active' | 'planned'
+}
+type Writeup = {
+  title: string
+  summary: string
+  bullets: string[]
+  tags: string[]
+}
+
 function getInitialTheme(): Theme {
   const saved = localStorage.getItem('theme')
   if (saved === 'light' || saved === 'dark') return saved
@@ -16,6 +32,66 @@ function App() {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  const featuredProjects: Project[] = [
+    {
+      title: 'Web Crypto demos (SHA-256, integrity, input safety)',
+      subtitle: 'Security fundamentals with safe rendering and browser-native crypto.',
+      tags: ['Web Crypto', 'Secure UI', 'Input safety'],
+      highlights: [
+        'SHA-256 text hashing + copy flow',
+        'Client-side file integrity hashing',
+        'Terminal simulation avoids HTML injection (XSS-safe output)',
+      ],
+      links: [{ label: 'Live demos', href: '#demos' }],
+      status: 'active',
+    },
+    {
+      title: 'Home lab notes (Networking + Linux)',
+      subtitle: 'Short, clear notes that show how I think and what I practice.',
+      tags: ['TCP/IP', 'DNS', 'Linux'],
+      highlights: ['Packet capture workflow', 'Common ports + services', 'Linux permissions + processes'],
+      links: [{ label: 'Read writeups', href: '#writeups' }],
+      status: 'planned',
+    },
+    {
+      title: 'Recon report generator (planned)',
+      subtitle: 'A small tool that turns scan output into a clean, shareable report.',
+      tags: ['Recon', 'Reporting', 'Automation'],
+      highlights: ['Structured output', 'Sanitized inputs', 'Clear findings + next steps'],
+      links: [{ label: 'Add project', href: '#contact' }],
+      status: 'planned',
+    },
+    {
+      title: 'Log parsing mini-SIEM (planned)',
+      subtitle: 'Parse auth logs, detect brute force patterns, and summarize incidents.',
+      tags: ['Detection', 'Logs', 'Python'],
+      highlights: ['Rule-based detection', 'Readable timelines', 'Actionable summaries'],
+      links: [{ label: 'Add project', href: '#contact' }],
+      status: 'planned',
+    },
+  ]
+
+  const writeups: Writeup[] = [
+    {
+      title: 'Hashing vs encryption',
+      summary: 'A practical mental model: what each does, what it cannot do, and where people commonly confuse them.',
+      bullets: ['One-way vs reversible', 'Integrity vs confidentiality', 'Where salts/keys fit in'],
+      tags: ['Crypto basics'],
+    },
+    {
+      title: 'Input validation & XSS prevention',
+      summary: 'Why safe output beats “sanitizing everything”, and how to avoid DOM injection in UI features.',
+      bullets: ['Prefer text nodes over innerHTML', 'Validate at boundaries', 'Escape only when you must'],
+      tags: ['AppSec', 'XSS'],
+    },
+    {
+      title: 'File integrity with SHA-256',
+      summary: 'What a hash proves (and what it doesn’t), plus a simple verification workflow you can repeat.',
+      bullets: ['Hash comparison workflow', 'Threat model: tampering', 'Limits: authenticity & trust'],
+      tags: ['Integrity'],
+    },
+  ]
 
   return (
     <div className="page">
@@ -31,8 +107,8 @@ function App() {
 
           <nav className="nav" aria-label="Primary">
             <a href="#about">About</a>
-            <a href="#skills">Focus</a>
-            <a href="#projects">Projects</a>
+            <a href="#proof">Proof</a>
+            <a href="#projects">Featured</a>
             <a href="#writeups">Writeups</a>
             <a href="#certs">Certs</a>
             <a href="#tools">Tools</a>
@@ -53,33 +129,33 @@ function App() {
       <main id="content" className="main">
         <section className="hero container" id="top">
           <div className="hero-copy">
-            <p className="badge">ICT Student • Cybersecurity track</p>
-            <h1 className="h1">Silas Mukabwa</h1>
+            <p className="badge">Cybersecurity • ICT Student</p>
+            <h1 className="h1">
+              Silas Mukabwa — building secure systems with strong fundamentals.
+            </h1>
             <p className="lede">
-              Building a strong foundation in web development, networking, and secure systems.
+              I focus on practical security: web app safety, Linux, networking, and small tools that demonstrate
+              real-world thinking.
             </p>
             <div className="hero-cta">
-              <a className="btn" href="#projects">
-                View projects
-              </a>
-              <a className="btn btn-ghost" href="https://github.com/silasmukabwa254-ux" target="_blank" rel="noreferrer">
-                GitHub
-              </a>
+              <a className="btn" href="#projects">Featured work</a>
+              <a className="btn btn-ghost" href="#contact">Contact</a>
+              <a className="btn btn-ghost" href="https://github.com/silasmukabwa254-ux" target="_blank" rel="noreferrer">GitHub</a>
             </div>
           </div>
 
           <div className="hero-card" aria-label="Quick highlights">
             <div className="kpi">
-              <div className="kpi-label">Interests</div>
+              <div className="kpi-label">Focus areas</div>
               <div className="kpi-value">AppSec • Linux • Networking</div>
             </div>
             <div className="kpi">
               <div className="kpi-label">Currently learning</div>
-              <div className="kpi-value">TCP/IP, DNS, HTTP, labs</div>
+              <div className="kpi-value">TCP/IP • DNS • HTTP • labs</div>
             </div>
             <div className="kpi">
-              <div className="kpi-label">Location</div>
-              <div className="kpi-value">Kenya (EAT)</div>
+              <div className="kpi-label">Available for</div>
+              <div className="kpi-value">Internships • Junior roles</div>
             </div>
           </div>
         </section>
@@ -87,51 +163,39 @@ function App() {
         <section className="section container" id="about">
           <h2 className="h2">About</h2>
           <p className="p">
-            I’m passionate about technology, cybersecurity, and building secure systems. I’m strengthening my foundation
-            in web development and networking while practicing with small, practical tools.
+            I’m a cybersecurity-focused ICT student who likes building small, clear tools and writeups that demonstrate
+            real skills. I care about safe output, good threat models, and being able to explain decisions.
           </p>
         </section>
 
-        <section className="section container" id="skills">
-          <h2 className="h2">Security interests</h2>
+        <section className="section container" id="proof">
+          <h2 className="h2">What I bring</h2>
           <div className="grid">
-            <Card title="Network Security Fundamentals">Core concepts, threat models, and safe defaults.</Card>
-            <Card title="Linux Systems (Learning)">CLI basics, permissions, processes, and tooling.</Card>
-            <Card title="Web App Security Basics">Input validation, safe rendering, and common pitfalls.</Card>
-            <Card title="Git & Version Control">Clean history, readable diffs, and deployable builds.</Card>
+            <InfoCard title="Secure-by-default mindset" lines={['Prefer safe output over sanitizing later', 'Threat model before building features']} />
+            <InfoCard title="Hands-on fundamentals" lines={['Networking concepts (TCP/IP, DNS, HTTP)', 'Linux basics + repeatable workflows']} />
+            <InfoCard title="Developer-friendly communication" lines={['Readable diffs and clean structure', 'Writeups that explain “why” clearly']} />
+            <InfoCard title="Practical learning pace" lines={['Small projects shipped regularly', 'Focus on correctness + clarity']} />
           </div>
         </section>
 
         <section className="section container" id="projects">
-          <h2 className="h2">Security projects (browser demos)</h2>
-          <p className="p">
-            These demos run client-side using the Web Crypto API and safe rendering. They’re meant to show fundamentals,
-            not replace production tooling.
-          </p>
+          <h2 className="h2">Featured work</h2>
+          <p className="p">A clean overview that a developer or recruiter can scan quickly.</p>
           <div className="grid">
-            <PasswordStrengthCard />
-            <EmailValidatorCard />
-            <Sha256Card />
-            <FileIntegrityCard />
-            <TerminalCard />
+            {featuredProjects.map((p) => (
+              <ProjectCard key={p.title} project={p} />
+            ))}
           </div>
         </section>
 
         <section className="section container" id="writeups">
           <h2 className="h2">Writeups</h2>
+          <p className="p">Short posts that show security thinking and communication.</p>
           <div className="grid">
-            <Card title="Hashing vs encryption (quick notes)">
-              Clear mental models, when to use each, and common mistakes.
-            </Card>
-            <Card title="Input validation & XSS prevention">
-              Why safe output matters. This site avoids injecting user input as HTML in interactive widgets.
-            </Card>
-            <Card title="File integrity with SHA-256">
-              What a hash proves (and what it doesn’t), plus a simple verification workflow.
-            </Card>
-            <Card title="Learning log (ongoing)">
-              TCP/IP, DNS, HTTP basics, plus labs and small scripts as I learn.
-            </Card>
+            {writeups.map((w) => (
+              <WriteupCard key={w.title} writeup={w} />
+            ))}
+            <Card title="Learning log (ongoing)">TCP/IP, DNS, HTTP basics, plus labs and small scripts as I learn.</Card>
           </div>
         </section>
 
@@ -149,6 +213,18 @@ function App() {
                 </span>
               ),
             )}
+          </div>
+        </section>
+
+        <section className="section container" id="demos">
+          <h2 className="h2">Interactive demos</h2>
+          <p className="p">Small security-focused widgets that run entirely in your browser.</p>
+          <div className="grid">
+            <PasswordStrengthCard />
+            <EmailValidatorCard />
+            <Sha256Card />
+            <FileIntegrityCard />
+            <TerminalCard />
           </div>
         </section>
 
@@ -196,6 +272,71 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
     <article className="card">
       <h3 className="h3">{title}</h3>
       <p className="p">{children}</p>
+    </article>
+  )
+}
+
+function InfoCard({ title, lines }: { title: string; lines: string[] }) {
+  return (
+    <article className="card">
+      <h3 className="h3">{title}</h3>
+      <ul className="list">
+        {lines.map((l) => (
+          <li key={l}>{l}</li>
+        ))}
+      </ul>
+    </article>
+  )
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className="card">
+      <div className="card-top">
+        <h3 className="h3">{project.title}</h3>
+        {project.status && <span className={`pill ${project.status}`}>{project.status === 'active' ? 'Active' : 'Planned'}</span>}
+      </div>
+      <p className="p">{project.subtitle}</p>
+      <div className="chips chips-tight" role="list" aria-label="Project tags">
+        {project.tags.map((t) => (
+          <span className="chip" role="listitem" key={t}>
+            {t}
+          </span>
+        ))}
+      </div>
+      <ul className="list">
+        {project.highlights.map((h) => (
+          <li key={h}>{h}</li>
+        ))}
+      </ul>
+      <div className="row">
+        {project.links.map((l) => (
+          <a key={l.href + l.label} className="btn btn-ghost" href={l.href}>
+            {l.label}
+          </a>
+        ))}
+      </div>
+    </article>
+  )
+}
+
+function WriteupCard({ writeup }: { writeup: Writeup }) {
+  return (
+    <article className="card">
+      <h3 className="h3">{writeup.title}</h3>
+      <p className="p">{writeup.summary}</p>
+      <ul className="list">
+        {writeup.bullets.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
+      <div className="chips chips-tight" role="list" aria-label="Writeup tags">
+        {writeup.tags.map((t) => (
+          <span className="chip" role="listitem" key={t}>
+            {t}
+          </span>
+        ))}
+      </div>
     </article>
   )
 }

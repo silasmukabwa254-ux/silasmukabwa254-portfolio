@@ -303,6 +303,10 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+.chips-tight {
+  margin-top: 10px;
+  gap: 8px;
+}
 .chip {
   padding: 8px 10px;
   border-radius: 999px;
@@ -310,6 +314,44 @@
   background: var(--surface);
   color: var(--muted);
   font-weight: 600;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface), transparent 10%);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+.pill.active {
+  color: color-mix(in oklab, var(--ok), white 15%);
+  border-color: color-mix(in oklab, var(--ok), var(--border) 55%);
+}
+.pill.planned {
+  color: color-mix(in oklab, var(--warn), white 15%);
+  border-color: color-mix(in oklab, var(--warn), var(--border) 55%);
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+.list li {
+  margin: 8px 0;
+  line-height: 1.55;
 }
 
 .contact {
