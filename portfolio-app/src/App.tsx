@@ -33,6 +33,8 @@ function App() {
             <a href="#about">About</a>
             <a href="#skills">Focus</a>
             <a href="#projects">Projects</a>
+            <a href="#writeups">Writeups</a>
+            <a href="#certs">Certs</a>
             <a href="#tools">Tools</a>
             <a href="#contact">Contact</a>
           </nav>
@@ -101,13 +103,52 @@ function App() {
         </section>
 
         <section className="section container" id="projects">
-          <h2 className="h2">Projects</h2>
+          <h2 className="h2">Security projects (browser demos)</h2>
+          <p className="p">
+            These demos run client-side using the Web Crypto API and safe rendering. They’re meant to show fundamentals,
+            not replace production tooling.
+          </p>
           <div className="grid">
             <PasswordStrengthCard />
             <EmailValidatorCard />
             <Sha256Card />
             <FileIntegrityCard />
             <TerminalCard />
+          </div>
+        </section>
+
+        <section className="section container" id="writeups">
+          <h2 className="h2">Writeups</h2>
+          <div className="grid">
+            <Card title="Hashing vs encryption (quick notes)">
+              Clear mental models, when to use each, and common mistakes.
+            </Card>
+            <Card title="Input validation & XSS prevention">
+              Why safe output matters. This site avoids injecting user input as HTML in interactive widgets.
+            </Card>
+            <Card title="File integrity with SHA-256">
+              What a hash proves (and what it doesn’t), plus a simple verification workflow.
+            </Card>
+            <Card title="Learning log (ongoing)">
+              TCP/IP, DNS, HTTP basics, plus labs and small scripts as I learn.
+            </Card>
+          </div>
+        </section>
+
+        <section className="section container" id="certs">
+          <h2 className="h2">Certifications & labs</h2>
+          <p className="p">
+            Add proof links here (TryHackMe/HTB profiles, course certificates, or lab notes). This section is designed to
+            evolve as you complete milestones.
+          </p>
+          <div className="chips" role="list" aria-label="Certs and labs">
+            {['TryHackMe (add profile)', 'HTB Academy (add profile)', 'Google Cybersecurity (add certificate)', 'Home labs (notes)'].map(
+              (t) => (
+                <span className="chip" role="listitem" key={t}>
+                  {t}
+                </span>
+              ),
+            )}
           </div>
         </section>
 
@@ -132,6 +173,9 @@ function App() {
             </a>
             <a className="btn btn-ghost" href="tel:+254769810785">
               Call
+            </a>
+            <a className="btn btn-ghost" href="https://github.com/silasmukabwa254-ux" target="_blank" rel="noreferrer">
+              GitHub profile
             </a>
           </div>
         </section>
