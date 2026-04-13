@@ -1,0 +1,14 @@
+## Vite/React app
+portfolio-app/node_modules/
+portfolio-app/dist/
+portfolio-app/.vite/
+
+## Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+## OS/editor
+.DS_Store
+Thumbs.db

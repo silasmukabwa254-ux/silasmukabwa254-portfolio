@@ -3,7 +3,7 @@
 ## Features
 - **Responsive Design:** Optimized for both mobile and desktop users.
 - **Interactive Elements:** Includes animations and interactive UI components.
-- **GitHub Pages:** Easily deployable on GitHub Pages.
+- **GitHub Pages:** Automatically deployed via GitHub Actions.
 - **Customization:** Simple to modify for personal branding.
 
 ## File Structure
@@ -18,6 +18,9 @@ project/
 ├── css.html        # CSS deep dive page
 ├── contacts.html   # Contact page
 └── *.png           # Images used on the site
+
+portfolio-app/      # Modern React + TypeScript app (source)
+└── dist/           # Production build output (generated)
 ```
 
 ## Getting Started Guide
@@ -26,8 +29,15 @@ project/
    git clone https://github.com/silasmukabwa254-ux/silasmukabwa254-portfolio.git
    cd silasmukabwa254-portfolio
    ```
-2. Open `index.html` in your web browser to view the project.
-3. Use a code editor to make changes in the files as necessary.
+2. Install dependencies for the modern app:
+   ```bash
+   cd portfolio-app
+   npm install
+   ```
+3. Run locally:
+   ```bash
+   npm run dev
+   ```
 
 ## Customization Instructions
 - To customize the styles, modify `style.css` (and `styles.css` for the card styles/variables).
@@ -35,16 +45,8 @@ project/
 - Feel free to add more images and reference them in your HTML/CSS.
 
 ## GitHub Pages Setup
-1. Push your changes to the `main` branch:
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
-   ```
-2. Go to your repository on GitHub.
-3. Click on the `Settings` tab.
-4. Scroll down to the `GitHub Pages` section.
-5. Select the `main` branch as the source and click `Save`.
-6. Your site will be published at `https://<username>.github.io/<repository-name>/`.
+The site deploys automatically on pushes to `main`.
+
+- In GitHub, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
 
 Enjoy your portfolio!
